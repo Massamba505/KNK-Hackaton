@@ -1,8 +1,9 @@
 # Knockando Residence Hackathon Website
 
+<img src="./public/images/KNK101.jpg" alt="KNK101 Image" style="width: 350px; height: 300px;">
+
 Welcome to the Knockando Residence Hackathon Website repository! This project aims to empower and support first-year students residing in Knockando Residence at the University of the Witwatersrand through innovative technological solutions and personalized assistance.
 
-![Knockando Residence Hackathon](./public/images/KNK1.jpg)
 
 ## Table of Contents
 
@@ -12,16 +13,15 @@ Welcome to the Knockando Residence Hackathon Website repository! This project ai
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## About Us
 
 We are final-year computer science students at the University of the Witwatersrand, Johannesburg. Driven by passion and innovation, we are dedicated to harnessing the power of technology to simplify and enhance everyday life. Our team is committed to showcasing the transformative potential of technology in our community.
 
 - **Team Members**:
-  - Massamba Maphalala ([@massamba505](https://github.com/Massamba505))
-  - Ritanzwe Mbezi ([@ritanzwe](https://github.com/Ritanzwe))
-  - Siphelele Mthethwa ([@siphelele](https://github.com/SOMEONE1703))
+  - Massamba Maphalala ([@Massamba505](https://github.com/Massamba505))
+  - Ritanzwe Mbezi ([@Ritanzwe](https://github.com/Ritanzwe))
+  - Siphelele Mthethwa ([@Siphelele](https://github.com/SOMEONE1703))
 
 ## Mission
 
@@ -40,12 +40,12 @@ To run the Knockando Residence Hackathon Website locally, follow these steps:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/Massamba505/knockando-hackathon-website.git
+   git clone https://github.com/Massamba505/KNK-Hackaton.git
    ```
 
 2. Install dependencies:
    ```bash
-   cd knockando-hackathon-website
+   cd KNK-Hackaton
    npm install
    ```
 
