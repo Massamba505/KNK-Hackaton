@@ -2,7 +2,7 @@
 
 Welcome to the Knockando Residence Hackathon Website repository! This project aims to empower and support first-year students residing in Knockando Residence at the University of the Witwatersrand through innovative technological solutions and personalized assistance.
 
-![Knockando Residence Hackathon](./assets/website-screenshot.png)
+![Knockando Residence Hackathon](./public/images/KNK1.jpg)
 
 ## Table of Contents
 
