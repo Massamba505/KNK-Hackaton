@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KNK Hackathon</title>
+    <link rel="stylesheet" href="./stylesheets/index.css">
+</head>
+<body>
+    <nav>
+        <a href="/">
+            <img src="/images/KNK101.jpg" alt="knk_logo_img">
+        </a>        <div class="details">
+            <a href="#about">ABOUT US</a>
+            <a href="#our-mission">OUR MISSION</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </nav>
+    <section class="jumbotron">
+        <a href="./home.html" class="side-image">
+            <img src="/images/KNK101.jpg" alt="knk_img">
+        </a>
+        <div class="side-text">
+            <h1>Knockando Hackathon</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus ratione reprehenderit laborum necessitatibus. Culpa, quos! Assumenda error recusandae, id alias cupiditate quas magni, voluptates modi accusamus neque pariatur facere officia?</p>
+            <div class="direction-buttons">
+                <!-- I feel like you need to log in inorder to see the leaderboard -->
+                <!-- <div onclick="navigate('./leaderboard.html')" id="leaderboard">Leaderboard</div> -->
+                <div onclick="log()" class="log-in">Log In</div>
+                <div onclick="navigate('./register.html')" class="register">Register</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <h1>ABOUT US</h1>
+        <div class="text-about-us">
+            <p>
+                We are final year computer science students at the University of the Witwatersrand, based in Johannesburg. Driven by passion and fueled by innovation, we are eager to explore the boundless possibilities of technology. Our team is dedicated to harnessing the power of technology to simplify and enhance everyday life.
+            </p>
+            <p>
+                With a keen focus on creativity and problem-solving, we are diving headfirst into the world of technology to showcase its transformative potential. Through our collective expertise and enthusiasm, we aim to inspire others and shed light on the myriad ways in which technology can revolutionize our world.
+            </p>
+            <p>
+                As we embark on this journey, we invite you to join us in exploring the endless opportunities that technology has to offer. Together, let's unlock the future and pave the way for a more connected, efficient, and empowered society
+            </p>
+        </div>
+        <div class="our-pictures">
+            <div class="picture">
+                <img src="/images/KNK101.jpg" alt="massamba_img">
+                <h3>Massamba Maphalala</h3>
+            </div>
+            <div class="picture">
+                <img src="/images/KNK101.jpg" alt="ritanzwe_img">
+                <h3>Ritanzwe Mbezi</h3>
+            </div>
+            <div class="picture">
+                <img src="/images/KNK101.jpg" alt="siphelele_img">
+                <h3>Siphelele Mthethwa</h3>
+            </div>
+        </div>
+    </section>
+
+    <section id="our-mission">
+        <h1>OUR MISSION</h1>
+        <div class="text-about-us">
+            <p>
+                Our mission is to empower and support first-year students residing in Knockando Residence at the University of the Witwatersrand. Through innovative technological solutions and personalized assistance, we aim to ease the transition into university life, providing valuable resources and guidance to help students thrive academically, socially, and personally. By leveraging the power of technology, we strive to create a supportive and inclusive community where every student can reach their full potential and embark on a successful journey throughout their university experience.    
+            </p>
+            <p>
+                Join us as we strive to build a brighter future for the University of the Witwatersrand community and beyond, one where technology serves as a catalyst for meaningful progress and lasting impact. 
+            </p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h1>Contact Us</h1>
+        <div class="container">
+            <div class="side-right">
+                <form action="/post" method="post">
+                    <input id="Name" type="text" placeholder="Name">
+                    <input id="Email" type="text" placeholder="Email">
+                    <textarea name="Message" id="Message" cols="30" rows="10" placeholder="Message"></textarea>
+                    <button id="submit" type="submit">Send Message</button>
+                </form>
+            </div>
+            <div class="side-left">
+                <img src="/images/KNK101.jpg" alt="_img">
+            </div>
+        </div>
+    </section>
+    <footer>
+        &copy; Knockando Hackathon
+    </footer>
+
+    <script>
+        function log(){
+            fetch('./users',{
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+            .then((res)=>{
+                return res.json();
+            })
+            .then((data)=>{
+                navigate(data.path);
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+        }
+
+        function navigate(url){
+            window.location.href = url;
+        }
+    </script>
+
+</body>
+</html>

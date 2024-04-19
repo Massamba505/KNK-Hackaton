@@ -1,0 +1,131 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.7em;
+    background-color: rgb(187, 187, 187);
+}
+
+.things{
+    display: flex;
+}
+
+.things div{
+    font-size: 0.8em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 5.8em;
+    height: 5em;
+    border: 1px black solid;
+    border-radius: 5em;
+    margin: 0px 0.1em;
+    padding: 1em;
+    cursor: pointer;
+}
+
+#change-pass{
+    background-color: rgb(0, 213, 255) ;
+}
+#log-out{
+    background-color: rgb(233, 67, 67) ;
+}
+
+
+/*  */
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+nav img{
+    width: 3em;
+    height: 3em;
+    margin-left: 1em;
+}
+nav h1{
+    text-align: center;
+    flex: 1;
+}
+
+.things{
+    display: flex;
+    margin-left: auto;
+}
+/*  */
+body h1{
+    text-align: center;
+    margin: 1em;
+}
+
+/*  */
+section{
+    display:flex;
+    justify-content: space-evenly;
+}
+
+main{
+    flex: 1;
+}
+
+.what-to-do {
+    padding: 2em;
+    border: 1px solid black;
+}
+.what-to-do p{
+    margin: 1em 0px;
+}
+
+.current{
+    border: 1px black solid;
+    padding: 1.5em;
+    margin: 2em 0px;
+}
+.btnThing{
+    display: flex;
+    gap: 2em;
+}
+.btnThing div{
+    border: 1px solid black;
+    border-radius: 0.5em;
+    padding: 1em;
+    cursor: pointer;
+    transition: background-color 0.4s;
+}
+
+.btnThing div:hover{
+    background-color: rgb(221, 221, 221);
+}
+/*  */
+.solved-problems{
+    border: 1px solid black;
+    padding: 2em;
+}
+.solved-problems ol{
+    margin: 1em 1em;
+}
+.solved-problems li{
+    margin: 0.5em 0em;
+}
+
+
+
+
+footer{
+    padding: 1em;
+    text-align: center;
+    background-color: gray;
+    align-items: flex-end;
+}
+
+span{
+    font-weight: bold;
+}

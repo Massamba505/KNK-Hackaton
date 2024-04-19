@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./stylesheets/register.css">
+</head>
+<body>
+    <form class="form_register">
+        <h1>Register</h1>
+        <span style="color: red; text-align: center;"></span>
+        <label for="username">username:</label>
+        <input type="text" id="username" name="username" required >
+        <label for="email">email:</label>
+        <input type="text" id="email" name="email" required>
+
+        <label for="password">password:</label>
+        <input type="text" id="password" name="password" required>
+
+        
+        <label for="confirm_password">confirm password:</label>
+        <input type="text" name="confirm_password" id="confirm_password">
+         
+        <!-- should submit -->
+        <button type="submit">register</button> 
+        <p>Knockandian? <u onclick="switch_register('./login.html')" class="colour"> Log In </u></p>
+    </form>
+    <script>
+        const form = document.getElementsByClassName("form_register")[0];
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            const password  = document.getElementById("password").value;
+            const confirm_password  = document.getElementById("confirm_password").value;
+            if(password !== confirm_password){
+                alert("Confirm Password");
+                return;
+            }
+            else if(password.length < 5){
+                alert("Your password is too short");
+            }
+            else{
+                const username  = document.getElementById("username").value;
+                const email  = document.getElementById("email").value;
+                
+                fetch("./users/register",{
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({
+                    username,
+                    password,
+                    email
+                })
+                })
+                .then((res)=>{
+                    if (res.status === 409) {
+                        return res.json();
+                    } else if (res.status === 201) {
+                        switch_register('./home.html');
+                    } else {
+                        throw new Error('Registration failed');
+                    }
+                })
+                .then((data)=>{
+                    invalid(data["message"]);
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
+
+            }
+        });
+
+        function switch_register(url) {
+            window.location.href = url;
+        }
+
+        function invalid(what){
+            const inv = document.querySelector(".form_register span");
+            inv.classList.add("invalid");
+            inv.textContent = `${what} ❌`;
+        }
+    </script>
+</body>
+</html>

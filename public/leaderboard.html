@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard</title>
+    <link rel="stylesheet" href="./stylesheets/leaderboard.css">
+</head>
+<body>
+    <nav>
+        <a href="./Home.html">
+            <img src="./images/KNK101.jpg" alt="knk_logo_img">
+        </a>
+        <h1>Leaderboard</h1>
+    </nav>
+    
+    <div class="container">
+        <div class="slot usernames">
+            <div class="Title Username">Username</div>
+            <div class="user">ritanzwe</div>
+            <div class="user">zoro</div>
+            <div class="user">minato</div>
+        </div>
+        <div class="slot solved">
+            <div class="Title problems-solved">Solved</div>
+            <div class="problem">10</div>
+            <div class="problem">9</div>
+            <div class="problem">5</div>
+        </div>
+    </div>
+    <button onclick="switch_register('./home.html')">Home</button>
+    <footer>&copy; Knockando Hackathon</footer>
+    <script>
+        function switch_register(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>

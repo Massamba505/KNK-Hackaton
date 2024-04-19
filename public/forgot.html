@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forget Password</title>
+    <link rel="stylesheet" href="./stylesheets/forgot.css">
+</head>
+<body>
+    <nav>
+        <a href="./Home.html">
+            <img src="./images/KNK101.jpg" alt="knk_logo_img">
+        </a>
+        <h1>Knockando Hackathon</h1>
+    </nav>
+  
+    <main>
+        <section class="container">
+            <h1>Forget Password</h1>
+            <form class="form">
+                <!-- <label for="email">Email:</label> -->
+                <span style="color: red; text-align: center;"></span>
+                <input type="email" id="email" name="email" placeholder="Enter email" required>
+                <input style="display: block;" type="code" id="code" name="code" placeholder="Enter code" required>
+                <button id="btn" type="submit">Get code</button>
+            </form>
+        </section>
+    </main>
+
+    
+    <button onclick="switch_register()" id="back">Home</button>
+    <footer>&copy; Knockando Hackathon</footer>
+    <script>
+        const form = document.getElementsByClassName("form")[0];
+        const codeElement = document.getElementById("code");
+        const emailElement = document.getElementById("email");
+
+        form.removeChild(codeElement);
+        let email = "";
+
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            email = emailElement.value;
+            if(email.lenght < 6){
+                alert("Enter a valid email");
+                return
+            }
+            forgotpass("");
+
+            btn.addEventListener("click",()=>{
+                forgotpass(`/${codeElement.value}`);
+            });
+        })
+
+        function forgotpass(code){
+            let url = `./users/forgotpassword${code}`;
+            fetch(url,{
+            method:"POST",
+            headers:{
+                "Content-type":"application/json",
+            },
+            body:JSON.stringify({
+                email
+            })
+            }).then((res)=>{
+                if(res.status == 200){
+                    console.log("email found");
+                    const btn = document.getElementById("btn");
+                    form.removeChild(btn);
+                    form.removeChild(emailElement);
+
+                    form.appendChild(codeElement);
+                    form.appendChild(btn);
+                    invalid("");
+                }
+                else if(res.status == 201){
+                    navigate("./newpassword.html");
+                }
+                else if(res.status == 401){
+                    res.json()
+                    .then((data)=>{        
+                        invalid(data["message"] +  "❌");
+                    });
+                }
+            })
+            .catch((err)=>{
+                console.log(err);
+            })
+
+        }
+        
+        function switch_register(){
+            fetch("./users/forgotback", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    key: "value"
+                })
+            })
+            .then(response => {
+                return response.json();
+            })
+            .then(data => {
+                navigate(data.path);
+            })
+            .catch(error => {
+                console.error("Fetch error:", error);
+            });
+
+        }
+
+        function navigate(url){
+            window.location.href = url;
+        }
+        function invalid(message){
+            const inv = document.querySelector(".form span");
+            inv.classList.add("invalid");
+            inv.textContent = message;
+        }
+
+    </script>
+</body>
+</html>

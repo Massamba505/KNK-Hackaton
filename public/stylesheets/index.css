@@ -1,0 +1,224 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+/* nav */
+
+nav{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0.7em;
+    background-color: rgb(187, 187, 187);
+}
+
+nav img{
+    width: 3em;
+    height: 3em;
+    margin-left: 1em;
+}
+
+.details{
+    display: flex;
+    margin-left: auto;
+}
+
+.details a{
+    text-decoration: none;
+    margin: 0.3em;
+    border: 1px solid white;
+    padding: 0.3em;
+    border-radius: 0.3em;
+    color: black;
+    transition: background-color,transform 0.4s;
+}
+.details a:hover{
+    background-color: rgb(207, 206, 206);
+    transform: scale(1.05);
+}
+/* ================= */
+
+.jumbotron{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 2em;
+    background-color: gray;
+    gap: 2.5em;
+}
+.side-image{
+    /* flex: 1; */
+    padding: 1em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.side-image img{
+    width: 30em;
+}
+
+.side-text{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.side-text h1{
+    text-align: center;
+    font-size: 3em;
+}
+.side-text p{
+    width: 25em;
+    margin: 2em auto;
+    text-align: start;
+}
+.direction-buttons{
+    display: flex;
+    justify-content: center;
+}
+.direction-buttons div{
+    margin: 1em;
+    border: 1px solid white;
+    padding: 0.5em;
+    border-radius: 0.2em;
+    cursor: pointer;
+    transition: background-color, scale 0.4;
+}
+
+.direction-buttons div:hover{
+    background-color: rgb(159, 159, 159);
+    transform: scale(1.05);
+}
+/* About Us */
+#about{
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+}
+#about h1{
+    text-align: center;
+}
+.text-about-us p{
+    margin: 1.5em;
+    line-height: 2em;
+}
+.text-about-us{
+    padding: 1.5em;
+}
+.our-pictures{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 1em;
+    gap: 3em;
+}
+.picture{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 28em;
+    border: 1px gray solid;
+}
+.picture img{
+    width: 75%;
+    margin-top: 1em;
+}
+.picture h3{
+    margin: 1em;    
+}
+
+/* OUR MISSION */
+
+#our-mission{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 1em;
+    background-color: gray;
+    color: white;
+}
+
+#our-mission h1{
+    text-align: center;
+    margin-top: 2em;
+}
+#our-mission .text-about-us{
+    
+    margin-bottom: 2em;
+}
+
+/* Contac Us */
+#contact{
+    padding: 2em;
+    padding-top: 0px;
+}
+#contact h1{
+    text-align: center;
+    padding: 1em;
+}
+.container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5em;
+}
+/* .side-right,.side-left{
+    flex: 1;
+} */
+
+.side-left{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.side-left img{
+    width: 30em;
+    height: 29sem;
+}
+.side-right form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.side-right input{
+    width: 30em;
+    height: 4em;
+    margin: 1em;
+    padding:0.5em;
+}
+.side-right textarea{
+    width: 30em;
+    padding:0.9em;
+    resize: none;
+}
+.side-right button{
+    width: 30em;
+}
+.side-right button{
+    margin-top: 1em;
+    width: 30em;
+    height: 4em;
+    
+}
+
+.side-right input,.side-right textarea,.side-right button{
+    outline: none;
+    border: 1px gray solid;
+    border-radius: 0.5em;
+}
+/* footer */
+
+footer{
+    padding: 1em;
+    text-align: center;
+    background-color: gray;
+}

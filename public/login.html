@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="./stylesheets/login.css">
+</head>
+<body>
+    <form class="login-form" >
+        <h2>Login</h2>
+        <span style="color: red; text-align: center;"></span>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Login</button>
+        <p>Remember <u onclick="switch_register('./forgot.html')" class="colour1">Forgot password</u></p>
+        <!-- <section class="flex">
+            <label for="forgetpass"></label>
+            <input type="checkbox" name="forgetpass" id="forgetpass">
+        </section> -->
+       
+        <p>Not a Knockandian yet? <u onclick="switch_register('./register.html')" class="colour"> Register </u></p>
+
+    </form>
+
+<!-- function switch_submit() {
+            let url = "./login";
+            fetch(url,{
+                method:'GET'
+                })
+                .then(res=>{
+                    if (res.ok){
+                        console.log("worked");
+                        return res.text();
+                    }
+                    else{
+                        console.log("did not work");
+                        return "nothing";
+                    }
+                })
+                
+                .catch(error=>console.error('ERROR',error))
+        } -->
+    <script>
+        const form = document.getElementsByClassName("login-form")[0];
+        form.addEventListener("submit",(e)=>{
+            e.preventDefault();
+            const username  = document.getElementById("username").value;
+            const password  = document.getElementById("password").value;
+            
+            fetch("./users/login",{
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({
+                    username,
+                    password
+                })
+                })
+                .then((res)=>{
+                    if(res.status == 200){
+                        switch_register("./home.html");
+                    }
+                    else if(res.status == 401){
+                        invalid();
+                    }
+                    else{
+                        throw new Error('Log In failed');
+                    }
+                })
+                .catch((err)=>{
+                    console.log(err);
+                })
+        });
+
+        function switch_register(url) {
+            window.location.href = url;
+        }
+
+        function invalid(){
+            const inv = document.querySelector(".login-form span");
+            inv.classList.add("invalid");
+            inv.textContent = "Username or password incorrect ❌";
+        }
+    </script>
+</body>
+</html>

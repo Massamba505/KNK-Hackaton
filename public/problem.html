@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem Description</title>
+    <!-- <link rel="stylesheet" href="./stylesheets/problem.css"> -->
+    <link rel="stylesheet" href="./stylesheets/problem.css">
+</head>
+<body>
+    <nav>
+        <a href="./Home.html">
+            <img src="./images/KNK101.jpg" alt="knk_logo_img">
+        </a>
+        <h1>Problem Description</h1>
+    </nav>
+
+    <div id="problem">
+        <iframe src="./users/problems" width="500" height="450" style="border: none;border: 1px solid #ccc;border-radius: 8px"></iframe>
+        <button>Submit</button>
+    </div>
+    
+    <button onclick="switch_register('./home.html')" id="back">Home</button>
+    <footer>&copy; Knockando Hackathon</footer>
+
+    <script>
+        
+        function switch_register(url) {
+            window.location.href = url;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission Page</title>
+    <link rel="stylesheet" href="./stylesheets/submission.css">
+    <script src="sub.js"></script>
+</head>
+<body>
+    <header>
+        <!-- <section class="block"> -->
+        <img src="knk.png" alt="knk.png" id="pic">
+        <h2 id="title">Submission</h2>
+    </header>
+   <main>
+        <form class="submit-form" id="submissionForm">
+            <section>
+                <h1>SubmitCode</h1>
+                <input type="file" id="fileInput" class="file-label">
+
+                <button type="button" onclick="submitCode()" class="submit">Submit</button>
+                <section id="result" class="test-results"></section>
+            </section>
+        </form>
+    </main>
+   
+    <footer>
+        &copy; Knockando Hackathon
+    </footer>
+
+    <script>
+        function submitCode() {
+            var fileInput = document.getElementById("fileInput");
+            var resultElement = document.getElementById("result");
+            resultElement.innerHTML = "";
+
+            var file = fileInput.files[0];
+            if (!file) {
+                resultElement.innerHTML = "Please select a file.";
+                return;
+            }
+
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var userCode = event.target.result;
+                try {
+                    var script = document.createElement('script');
+                    script.textContent = userCode;
+                    document.head.appendChild(script);
+
+                    // Define test cases
+                    var testCases = [
+                        { input: 5, expected: 25 },
+                        { input: 3, expected: 9 },
+                        { input: 8, expected: 64 }
+                        // Add more test cases as needed
+                    ];
+
+                    // Evaluate user's code against test cases
+                    testCases.forEach(function(testCase, index) {
+                        var output = square(testCase.input);
+                        var testCaseResult = document.createElement('p');
+                        testCaseResult.textContent = "Test case " + (index + 1) + ": ";
+                        if (output === testCase.expected) {
+                            testCaseResult.textContent += "Passed";
+                            testCaseResult.style.color = "green";
+                        } else {
+                            testCaseResult.textContent += "Failed";
+                            testCaseResult.style.color = "red";
+                        }
+                        resultElement.appendChild(testCaseResult);
+                    });
+
+                    // Clean up
+                    document.head.removeChild(script);
+                } catch (error) {
+                    resultElement.innerHTML = "Error: " + error.message;
+                }
+            };
+            reader.readAsText(file);
+        }
+    </script>
+</body>
+</html>
