@@ -11,7 +11,7 @@ nav{
     display: flex;
     align-items: center;
     padding: 0.7em;
-    background-color: rgb(187, 187, 187);
+    background-color: rgb(49, 43, 165);
 }
 
 nav img{
@@ -46,7 +46,10 @@ nav img{
     align-items: center;
     flex-wrap: wrap;
     padding: 2em;
-    background-color: gray;
+   background-color: gray;
+   background-position:right;
+   /* background-size: cover; */
+   background-repeat: no-repeat;
     gap: 2.5em;
 }
 .side-image{
