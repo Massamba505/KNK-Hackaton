@@ -56,6 +56,11 @@ nav img{
     height: 100%;
     width: 40%;
 }
+.picture img {
+    width: 400px; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+}
+
 .side-image img{
     width: 100%;
 }
@@ -145,7 +150,7 @@ nav img{
     flex-wrap: wrap;
     flex-direction: column;
     padding: 1em;
-    background-color: #98acc2;
+    background-color: #409595;
     color: white;
 }
 
@@ -216,7 +221,7 @@ nav img{
 
 .side-right input,.side-right textarea,.side-right button{
     outline: none;
-    background-color: #98acc2;
+    background-color: #f9f9f9;
     border-radius: 0.5em;
 }
 /* footer */
@@ -224,5 +229,5 @@ nav img{
 footer{
     padding: 1em;
     text-align: center;
-    background-color: #98acc2;
+    background-color: #409595;
 }
