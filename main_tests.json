@@ -1,11 +1,11 @@
 [
   {
     "test_id": "adding",
-    "person_id": "2",
+    "person_id": "Example",
     "input": [
-      "C:\\Users\\siphe\\Documents\\programs\\html+js+css\\KNK-Hackaton\\routes/tests/adding/1.txt",
-      "C:\\Users\\siphe\\Documents\\programs\\html+js+css\\KNK-Hackaton\\routes/tests/adding/2.txt",
-      "C:\\Users\\siphe\\Documents\\programs\\html+js+css\\KNK-Hackaton\\routes/tests/adding/3.txt"
+      "4 5",
+      "115 489",
+      "503 377"
     ],
     "expected_out": [
       9,

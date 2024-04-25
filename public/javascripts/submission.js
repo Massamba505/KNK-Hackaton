@@ -1,4 +1,4 @@
-const username="2";
+const username=localStorage.getItem("knk-username");
 const curr_test= "adding"
 
 function send_file(){
@@ -151,8 +151,8 @@ function sendFile() {
         console.log("squeeze:");
         console.log(data);
         console.log(":theorem");
-        switch_res();
-        const butt=document.getElementById("submit");
+        //switch_res();
+        const butt=document.getElementById("sub");
         //butt.onclick=get_res;
         butt.textContent="See Results";
         butt.onclick=switch_res;

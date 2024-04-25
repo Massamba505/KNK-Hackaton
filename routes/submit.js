@@ -86,10 +86,30 @@ async function run_test(id, input, expected_output) {
     }
 }
 
+async function run_basic_test(id, input, expected_output) {
+    try {
+        const { stdout, stderr } = await exec(`echo ${input} | programs\\${id}.exe`);
+        if (stderr) {
+            console.error(`execution error: ${stderr}`);
+            return "execution error";
+        }
+        if (stdout.trim() === expected_output.toString().trim()) {
+            console.log("end of test P");
+            return true;
+        } else {
+            console.log("end of test F");
+            return false;
+        }
+    } catch (error) {
+        console.error(`execution error: ${error}`);
+        return "execution error";
+    }
+}
+
 async function compile(id) {
     console.log(`exe saved to:${__dirname}`);
     try {
-        const { stdout, stderr } = await exec(`g++ ${id}.cpp -o ${id}.exe`);
+        const { stdout, stderr } = await exec(`g++ programs/${id}.cpp -o programs/${id}.exe`);
         if (stderr) {
             console.error(`compile error: ${stderr}`);
             return false;
@@ -106,7 +126,7 @@ async function compile(id) {
 function adding_test(person_id, test_id, status) {
     this.test_id = test_id;
     this.person_id = person_id;
-    this.input = [__dirname + "/tests/adding/1.txt", __dirname + "/tests/adding/2.txt", __dirname + "/tests/adding/3.txt"];
+    this.input = ["4 5", "115 489", "503 377"];
     this.expected_out = [9, 604, 880];
     this.output = [];
     this.score = 'not-a-value';
@@ -115,7 +135,7 @@ function adding_test(person_id, test_id, status) {
     this.save_this=function(){
         console.log(`JSON saved to:${__dirname}`);
         const jsonData = JSON.stringify(this, null, 2);
-        fs.writeFileSync(`${this.person_id}${this.test_id}.json`, jsonData);
+        fs.writeFileSync(`results/${this.person_id}${this.test_id}.json`, jsonData);
     }
     this.test = async function () {
         const compiled = await compile(person_id);
@@ -123,7 +143,7 @@ function adding_test(person_id, test_id, status) {
         if (compiled){
             for (let i = 0; i < this.input.length; i++) {
                 try {
-                    const outcome = await run_test(this.person_id, this.input[i], this.expected_out[i]);
+                    const outcome = await run_basic_test(this.person_id, this.input[i], this.expected_out[i]);
                     console.log(`outcome is: ${outcome}: end`);
                     if (this.score === 'not-a-value') {
                         this.score = 0;
@@ -134,7 +154,9 @@ function adding_test(person_id, test_id, status) {
                     } else if (outcome === false) {
                         this.output.push("Failed");
                     }
-                    this.save_this();
+                    if (i==this.input.length-1){
+                        this.save_this();
+                    }
                 } catch (error) {
                     console.error(`Error occurred during test execution: ${error}`);
                 }
@@ -150,7 +172,7 @@ function adding_test(person_id, test_id, status) {
 
 function saveMainTestsToFile(mainTestsArray) {
     const jsonData = JSON.stringify(mainTestsArray, null, 2);
-    fs.writeFileSync('main_tests.json', jsonData);
+    fs.writeFileSync('results/main_tests.json', jsonData);
 }
 router.get('/', function(req, res, next) {
   const filePath = path.join(__dirname, "../public/submission.html");
@@ -161,8 +183,7 @@ router.get('/problem', function(req, res, next) {
     res.sendFile(filePath);
   });
 
-router.get('/results', function(req, res, next) {
-    
+router.get('/results', function(req, res, next) {  
     const filePath = path.join(__dirname, "../public/results.html");
     res.sendFile(filePath);
 });
@@ -209,7 +230,7 @@ router.post("/:id",upload.single('file'),(request,response,next)=>{
     
     let filePath=request.file.path;
     console.log(`JSON saved to:${__dirname}`);
-    var f=`${ID}.cpp`;
+    var f=`programs/${ID}.cpp`;
     var co_res="not done";
     var status=0;
     fs.readFile(filePath, 'utf8', (err, data) => {
@@ -235,7 +256,7 @@ router.post("/:id",upload.single('file'),(request,response,next)=>{
             //     console.log("done compiling");
             //     //response.status(200).send("done");
             // });
-            //console.log(`first write to ${f} successfully`);
+            console.log(`first write to ${f} successfully`);
         });
         
     });
@@ -266,7 +287,8 @@ router.get("/:id/:func", function(req, res) {
         //const data = fs.readFileSync(`${ID}${name}.json`, 'utf8');
         // Parse JSON data
         //const main_test = JSON.parse(data);
-        var main_test = require(`../${ID}${name}.json`);
+        delete require.cache[require.resolve(`../results/${ID}${name}.json`)];
+        var main_test = require(`../results/${ID}${name}.json`);
         res.send({status:1,tests:main_test.output});
     } catch (err) {
         console.error('Error reading main_tests.json:', err);

@@ -1,4 +1,4 @@
-const username="2";
+const username=localStorage.getItem("knk-username");
 const curr_test= "adding";
 function switch_lead(){
     window.location.href="/submit/results";
