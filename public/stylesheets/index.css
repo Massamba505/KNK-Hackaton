@@ -11,7 +11,7 @@ nav{
     display: flex;
     align-items: center;
     padding: 0.7em;
-    background-color: rgb(49, 43, 165);
+    background-color: #409595;
 }
 
 nav img{
@@ -35,32 +35,34 @@ nav img{
     transition: background-color,transform 0.4s;
 }
 .details a:hover{
-    background-color: rgb(207, 206, 206);
+    background-color: rgb(21, 146, 208);
     transform: scale(1.05);
 }
 /* ================= */
 
 .jumbotron{
     display: flex;
-    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
-    padding: 2em;
-   background-color: gray;
-   background-position:right;
-   /* background-size: cover; */
-   background-repeat: no-repeat;
-    gap: 2.5em;
+  height: 80vh;
+  background-color: black;
+  display: flex;
 }
 .side-image{
     /* flex: 1; */
-    padding: 1em;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    height: 100%;
+    width: 40%;
 }
+.picture img {
+    width: 400px; /* Adjust the width as needed */
+    height: 400px; /* Adjust the height as needed */
+}
+
 .side-image img{
-    width: 30em;
+    width: 100%;
 }
 
 .side-text{
@@ -69,6 +71,10 @@ nav img{
     align-items: center;
     justify-content: center;
     color: white;
+    background-image: url('../images/wolf4.jpg');
+    height: 100%;
+    width: 60%;
+    background-size: cover;
 }
 
 .side-text h1{
@@ -94,7 +100,7 @@ nav img{
 }
 
 .direction-buttons div:hover{
-    background-color: rgb(159, 159, 159);
+    background-color:  rgb(21, 146, 208);
     transform: scale(1.05);
 }
 /* About Us */
@@ -144,7 +150,7 @@ nav img{
     flex-wrap: wrap;
     flex-direction: column;
     padding: 1em;
-    background-color: gray;
+    background-color: #409595;
     color: white;
 }
 
@@ -215,7 +221,7 @@ nav img{
 
 .side-right input,.side-right textarea,.side-right button{
     outline: none;
-    border: 1px gray solid;
+    background-color: #f9f9f9;
     border-radius: 0.5em;
 }
 /* footer */
@@ -223,5 +229,5 @@ nav img{
 footer{
     padding: 1em;
     text-align: center;
-    background-color: gray;
+    background-color: #409595;
 }
