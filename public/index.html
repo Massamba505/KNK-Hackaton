@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KNK Hackathon</title>
-    <link rel="stylesheet" href="./stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/index.css">
 </head>
 <body>
     <nav>
         <a href="/">
-            <img src="./images/KNK.png" alt="knk_logo_img">
+            <img src="/images/KNK.png" alt="knk_logo_img">
         </a>        <div class="details">
             <a href="#about">ABOUT US</a>
             <a href="#our-mission">OUR MISSION</a>
@@ -17,8 +17,8 @@
         </div>
     </nav>
     <section class="jumbotron">
-        <a href="./home.html" class="side-image">
-            <img src="./images/KNK.png" alt="knk_img" height="100%">
+        <a href="/home" class="side-image">
+            <img src="/images/KNK.png" alt="knk_img" height="100%">
         </a>
         <div class="side-text">
             <h1>Knockando Hackathon</h1>
@@ -28,7 +28,7 @@
                 <!-- I feel like you need to log in inorder to see the leaderboard -->
                 <!-- <div onclick="navigate('./leaderboard.html')" id="leaderboard">Leaderboard</div> -->
                 <div onclick="log()" class="log-in">Log In</div>
-                <div onclick="navigate('./register.html')" class="register">Register</div>
+                <div onclick="switch_register()" class="register">Register</div>
             </div>
         </div>
     </section>
@@ -48,15 +48,15 @@
         </div>
         <div class="our-pictures">
             <div class="picture">
-                <img src="./images/mas2.jpg" alt="massamba_img">
+                <img src="/images/mas2.jpg" alt="massamba_img">
                 <h3>Massamba Maphalala</h3>
             </div>
             <div class="picture">
-                <img src="./images/RITANZWE.jpg" alt="ritanzwe_img">
+                <img src="/images/RITANZWE.jpg" alt="ritanzwe_img">
                 <h3>Ritanzwe Mbezi</h3>
             </div>
             <div class="picture">
-                <img src="./images/sphe2.jpg" alt="siphelele_img">
+                <img src="/images/sphe2.jpg" alt="siphelele_img">
                 <h3>Siphelele Mthethwa</h3>
             </div>
         </div>
@@ -86,7 +86,7 @@
                 </form>
             </div>
             <div class="side-left">
-                <img src="./images/KNK.png" alt="_img">
+                <img src="/images/KNK.png" alt="_img">
             </div>
         </div>
     </section>
@@ -96,7 +96,7 @@
 
     <script>
         function log(){
-            fetch('./users',{
+            fetch('/users',{
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json"
@@ -107,6 +107,12 @@
             })
             .then((data)=>{
                 navigate(data.path);
+                if (data.path=="./home.html"){
+                    switch_home();
+                }
+                else if(data.path=="./login.html"){
+                    switch_login();
+                }
             })
             .catch((err)=>{
                 console.log(err);
@@ -115,6 +121,15 @@
 
         function navigate(url){
             window.location.href = url;
+        }
+        function switch_register(){
+            window.location.href = "/users/register";
+        }
+        function switch_home(){
+            window.location.href = "/home";
+        }
+        function switch_login(){
+            window.location.href = "/users/login";
         }
     </script>
 

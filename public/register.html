@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./stylesheets/register.css">
+    <link rel="stylesheet" href="/stylesheets/register.css">
 </head>
 <body>
     <form class="form_register">
@@ -24,7 +24,7 @@
          
         <!-- should submit -->
         <button type="submit">register</button> 
-        <p>Knockandian? <u onclick="switch_register('./login.html')" class="colour"> Log In </u></p>
+        <p>Knockandian? <u onclick="switch_login()" class="colour"> Log In </u></p>
     </form>
     <script>
         const form = document.getElementsByClassName("form_register")[0];
@@ -43,7 +43,7 @@
                 const username  = document.getElementById("username").value;
                 const email  = document.getElementById("email").value;
                 
-                fetch("./users/register",{
+                fetch("/users/register",{
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -58,7 +58,8 @@
                     if (res.status === 409) {
                         return res.json();
                     } else if (res.status === 201) {
-                        switch_register('./home.html');
+                        localStorage.setItem("knk-username",username);
+                        switch_home();
                     } else {
                         throw new Error('Registration failed');
                     }
@@ -75,6 +76,13 @@
 
         function switch_register(url) {
             window.location.href = url;
+        }
+
+        function switch_home() {
+            window.location.href = "/home";
+        }
+        function switch_login() {
+            window.location.href = "/users/login";
         }
 
         function invalid(what){
