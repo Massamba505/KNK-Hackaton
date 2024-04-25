@@ -1,4 +1,6 @@
 header  {
+  display: flex;
+  flex-direction: row;
   background-color: rgb(17, 16, 16);
   color: rgb(241, 234, 234);
   height: 8,9vh;
@@ -7,8 +9,8 @@ header  {
 
 }
 #pic{
-  width: 4em;
-  height: 4em;
+  width: 3.5em;
+  height: 3.5em;
   justify-content: start; 
 
 }
@@ -24,6 +26,7 @@ header  {
   text-align: center;
   margin: 0;
   flex: 1; 
+  font-size: 30px;
 }
 
 .file-label {

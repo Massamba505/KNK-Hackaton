@@ -1,0 +1,19 @@
+[
+  {
+    "test_id": "adding",
+    "person_id": "Example",
+    "input": [
+      "4 5",
+      "115 489",
+      "503 377"
+    ],
+    "expected_out": [
+      9,
+      604,
+      880
+    ],
+    "output": [],
+    "score": "not-a-value",
+    "status": 0
+  }
+]

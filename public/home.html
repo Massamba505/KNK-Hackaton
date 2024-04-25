@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="./stylesheets/home.css">
+    <link rel="stylesheet" href="/stylesheets/home.css">
 </head>
 <body>
     <nav>
-        <img src="./images/KNK101.jpg" alt="knk_logo">
+        <img src="/images/KNK101.jpg" alt="knk_logo">
         <h1></h1>
         <div class="things">
-            <div onclick="switch_register('./forgot.html')" id="change-pass">Change Password</div>
+            <div onclick="switch_forgot()" id="change-pass">Change Password</div>
             <div id="log-out">Log Out</div>
         </div>
     </nav>
@@ -24,8 +24,8 @@
                     <p>Solve as many problems as you can</p>
                     <div class="current">Currently solving: <span id="solving">Micro Padding</span></div>
                     <div class="btnThing">
-                        <div onclick="switch_register('./leaderboard.html')" id="leaderboard">Leaderboard</div>
-                        <div onclick="switch_register('./problem.html')" id="solve-problem">Solve Problem</div>
+                        <div onclick="switch_lead()" id="leaderboard">Leaderboard</div>
+                        <div onclick="switch_problem()" id="solve-problem">Solve Problem</div>
                     </div>
                 </div>
             </div>
@@ -44,24 +44,26 @@
 
     <script>
 
-
-
-
-
-
-
-
-
-
-
+        function switch_lead(){
+            window.location.href="/leaderboard";
+        }
+        function switch_problem(){
+            window.location.href="/submit/problem";
+        }
+        function switch_forgot(){
+            window.location.href="/users/forgot";
+        }
+        function switch_register(url){
+            window.location.href=url;
+        }
 
     // Function to show a confirmation dialog
     function showConfirmation() {
         const result = window.confirm("Do you want to continue with logging out?");
         if (result) {
-            fetch("./users/logout")
+            fetch("/users/logout")
             .then((res)=>{
-                switch_register("./");
+                switch_register("/");
             })
             .catch((err)=>{
                 console.log(err);
@@ -71,9 +73,7 @@
     document.getElementById("log-out").addEventListener("click", showConfirmation);
 
 
-        function switch_register(url) {
-            window.location.href = url;
-        }
+        
     </script>
 </body>
 </html>

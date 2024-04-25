@@ -4,67 +4,55 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submission</title>
-    <link rel="stylesheet" href="./stylesheets/results.css">
-    <script src="https://knk-submission.azurewebsites.net/javascripts/result.js"></script>
+    <link rel="stylesheet" href="/stylesheets/results.css">
+    <script src="/javascripts/results.js"></script>
 </head>
 <body>
     <header>
         <a href="/">
-            <img src="https://knk-submission.azurewebsites.net/images/KNK101.jpg" alt="knk_logo_img" height="45px" width="45px">
+            <img src="/images/KNK101.jpg" alt="knk_logo_img" height="45px" width="45px">
         </a>
-        <section ><!-- style="display: flex;flex:1;flex-direction: column;justify-content: center;align-self: center; -->
+        <section style="display: flex;flex-direction: column;justify-content: center;align-self: center;">
             <h1 id="main_title">Knockando Hackathon</h1>
         </section>
+            
     </header>
     <main>
-        <form>
+        <div>
             <article style="border: 1px solid;"><h1>Submission Status</h1></article>
             <article style="display: flex;flex-direction: row;">
                 <section class="them"><h1>Submission Status</h1></section>
-                <section class="they"><h2>Submitted</h2></section>
+                <section class="they" id="submit"><h2>Submitted</h2></section>
             </article>
             <article style="display: flex;flex-direction: row;">
                 <section class="them"><h1>Grade</h1></section>
-                <section class="they"><h2>Not Graded</h2></section>
+                <section class="they"id = "grade"><h1>Not Graded</h1></section>
             </article>
             <article style="display: flex;flex-direction: row;">
                 <section class="them"><h1>Time Remaining</h1></section>
-                <section class="they"><h2>13 hours</h2></section>
+                <section class="they"id="time"><h1>13 hours</h1></section>
             </article>
             <article style="display: flex;flex-direction: row;">
                 <section class="them"><h1>File Submission</h1></section>
                 <section class="they"><h1>No File</h1></section>
             </article>
-            <span style="height: 10px;border: 1px solid;"></span>
-            <article style="display: flex;flex-direction: row;">
-                <section class="them"><h1>test case #1</h1></section>
-                <section class="they" id="test1"><h1>Passed</h1></section>
-            </article>
-            <article style="display: flex;flex-direction: row;">
-                <section class="them"><h1>test case #2</h1></section>
-                <section class="they" id="test2"><h1>Passed</h1></section>
-            </article>
-            <article style="display: flex;flex-direction: row;">
-                <section class="them"><h1>test case #3</h1></section>
-                <section class="they" id="test3"><h1>Fail</h1></section>
-            </article>
-            <article style="display: flex;flex-direction: row;">
-                <section class="them"><h1>test case #4</h1></section>
-                <section class= "they" id="test4"><h2>Fail</h2></section>
-            </article>
-            <article>
+            
+            <div id="result">
+                
+            </div>
 
             </article>
             <article id="buttons">
-                <!-- <span class="divider"></span> -->
-                <button onclick="switch_problem()" id="prob">Problem Description</button>
-                <!-- <span class="dividers"></span> -->
-                <button onclick="switch_lead()" id="lead">Leaderboard</button>
-                <!-- <span class="dividers"></span> -->
-                <button onclick="switch_next()" id="next_p">Next Problem</button>
-                <!-- <span class="divider"></span> -->
+                <span class="divider"></span>
+                <button onclick="switch_problem()"id="prob">Problem Description</button>
+                <span class="dividers"></span>
+                <button onclick="switch_lead()"id="lead">Leaderboard</button>
+                <span class="dividers"></span>
+                <button onclick="switch_next()"id="next_p">Next Problem</button>
+                <span class="divider"></span>
+
             </article>
-        </form>
+        </div>
     </main>
     <footer><p style="color: black;">&copy;Knockando Hackathon</p></footer>
 </body>

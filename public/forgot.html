@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forget Password</title>
-    <link rel="stylesheet" href="./stylesheets/forgot.css">
+    <link rel="stylesheet" href="/stylesheets/forgot.css">
 </head>
 <body>
     <nav>
-        <a href="./Home.html">
-            <img src="./images/KNK101.jpg" alt="knk_logo_img">
+        <a href="/home">
+            <img src="/images/KNK101.jpg" alt="knk_logo_img">
         </a>
         <h1>Knockando Hackathon</h1>
     </nav>
@@ -53,7 +53,7 @@
         })
 
         function forgotpass(code){
-            let url = `./users/forgotpassword${code}`;
+            let url = `/users/forgotpassword${code}`;
             fetch(url,{
             method:"POST",
             headers:{
@@ -74,7 +74,7 @@
                     invalid("");
                 }
                 else if(res.status == 201){
-                    navigate("./newpassword.html");
+                    navigate("/users/newpassword");
                 }
                 else if(res.status == 401){
                     res.json()
@@ -90,7 +90,7 @@
         }
         
         function switch_register(){
-            fetch("./users/forgotback", {
+            fetch("/users/forgotback", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -114,6 +114,8 @@
         function navigate(url){
             window.location.href = url;
         }
+        
+        
         function invalid(message){
             const inv = document.querySelector(".form span");
             inv.classList.add("invalid");

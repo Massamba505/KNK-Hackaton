@@ -4,25 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submission Page</title>
-    <link rel="stylesheet" href="./stylesheets/submission.css">
-    <script src="sub.js"></script>
+    <link rel="stylesheet" href="/stylesheets/submission.css">
+    <script src="/javascripts/submission.js"></script>
 </head>
 <body>
     <header>
         <!-- <section class="block"> -->
-        <img src="knk.png" alt="knk.png" id="pic">
+        <img src="/images/KNK101.jpg" alt="knk.png" id="pic">
         <h2 id="title">Submission</h2>
     </header>
    <main>
-        <form class="submit-form" id="submissionForm">
+        <div class="submit-form" id="submissionForm">
             <section>
-                <h1>SubmitCode</h1>
+                <h1>Submit Code</h1>
                 <input type="file" id="fileInput" class="file-label">
 
-                <button type="button" onclick="submitCode()" class="submit">Submit</button>
+                <button type="button" onclick="sendFile()" id="sub" class="submit">Submit</button>
                 <section id="result" class="test-results"></section>
             </section>
-        </form>
+        </div>
     </main>
    
     <footer>

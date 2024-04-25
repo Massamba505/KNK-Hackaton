@@ -200,5 +200,23 @@ router.get("/problems",(req,res)=>{
   res.sendFile(pdfFilePath);
 });
 
+router.get('/newpassword', function(req, res, next) {
+  const filePath = path.join(__dirname, "../public/newpassword.html");
+  res.sendFile(filePath);
+});
+
+router.get('/forgot', function(req, res, next) {
+  const filePath = path.join(__dirname, "../public/forgot.html");
+  res.sendFile(filePath);
+});
+router.get('/login', function(req, res, next) {
+  const filePath = path.join(__dirname, "../public/login.html");
+  res.sendFile(filePath);
+});
+
+router.get('/register', function(req, res, next) {
+  const filePath = path.join(__dirname, "../public/register.html");
+  res.sendFile(filePath);
+});
 
 module.exports = router;
