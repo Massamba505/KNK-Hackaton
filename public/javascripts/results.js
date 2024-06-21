@@ -1,5 +1,9 @@
 const username=localStorage.getItem("knk-username");
 const curr_test= "adding";
+const socket=io();
+socket.on("results",(data)=>{
+    console.log(data);
+});
 function switch_lead(){
     window.location.href="/submit/results";
 }
@@ -12,7 +16,7 @@ function switch_submit(){
 function switch_next(){
     window.location.href="/submit/results";
 }
-function get_res(){
+function getter_res(){
     console.log("call");
     //let url="https://knk-submission.azurewebsites.net/submit/1/adding"
     fetch(`/submit/${username}/${curr_test}`,{
@@ -79,5 +83,7 @@ function get_res(){
     })
     .catch(error=>console.error('ERROR',error))
 }
-
+function get_res(){
+    socket.emit("result",{username:username,test_id:curr_test});
+}
 get_res();

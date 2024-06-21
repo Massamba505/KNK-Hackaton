@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('knk-to-upload:server');
 var http = require('http');
 
+const configureSocketIO = require("../conf/serverSocket.js");
 const mongoose = require("mongoose");
 
 /**
@@ -23,6 +24,7 @@ app.set('port', port);
 
 var server = http.createServer(app);
 
+
 /**
  * Listen on provided port, on all network interfaces.
  */
@@ -31,6 +33,8 @@ var server = http.createServer(app);
 mongoose.connect("mongodb+srv://knk:knk1921@cluster0.rjxqkwr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
   .then(()=>{
     console.log("db connected");
+    const io= configureSocketIO(server);
+    console.log("socket initialised");
     server.listen(port);
     server.on('error', onError);
     server.on('listening', onListening);
