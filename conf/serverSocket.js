@@ -102,6 +102,7 @@ async function compile(socket,filePath,io,ID,test_id){
         }
         //io.to(socket.id).emit("compiled",{message:"compiled successfully"});
         console.log("compiled successfully,now running");
+        io.to(socket.id).emit("compiled",{message:`done compiling`});
         run_test(test_id,filePath,socket,io,ID);
         return true;
     } catch (error) {

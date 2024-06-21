@@ -1,7 +1,34 @@
 const username=localStorage.getItem("knk-username");
 const curr_test= "adding";
 const socket=io();
+socket.on("identity",(data)=>{
+    console.log(data);
+});
+
 socket.on("results",(data)=>{
+    console.log(data);
+});
+socket.on("identity",(data)=>{
+    console.log(data);
+});
+
+socket.on("error",(data)=>{
+    console.log("error");
+    console.log(data);
+});
+socket.on("wrote",(data)=>{
+    console.log("wrote");
+    console.log(data);
+});
+socket.on("compiled",(data)=>{
+    console.log("compiled");
+    console.log(data);
+});
+socket.on("not-found",()=>{
+    console.log("Results not found");
+});
+socket.on("done",(data)=>{
+    console.log("done");
     console.log(data);
 });
 function switch_lead(){
