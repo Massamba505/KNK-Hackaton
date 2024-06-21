@@ -1,7 +1,41 @@
 const username=localStorage.getItem("knk-username");
 const curr_test= "adding"
 
+const socket=io();
+
+socket.emit("first",{username:username,test_id:curr_test});
+
+socket.on("error",(data)=>{
+    console.log("error");
+    console.log(data);
+});
+socket.on("wrote",(data)=>{
+    console.log("wrote");
+    console.log(data);
+});
+socket.on("not-found",()=>{
+    console.log("Results not found");
+});
+function sendFile(){
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    if (!file) {
+        alert("Please select a file");
+        return;
+    }
+    socket.emit("upload",file)
+}
 function send_file(){
+    const fileInput = document.getElementById('fileInput');
+    const file = fileInput.files[0];
+    if (!file) {
+        alert("Please select a file");
+        return;
+    }
+    socket.emit("upload",file)
+}
+
+function sender_file(){
     var fileInput = document.getElementById("fileInput");
     var resultElement = document.getElementById("result");
     resultElement.innerHTML = "";
@@ -129,7 +163,7 @@ function get_res(){
     .catch(error=>console.error('ERROR',error))
 }
 
-function sendFile() {
+function senderFile() {
     var temp=document.getElementById("result");
     temp.replaceChildren();
     const fileInput = document.getElementById('fileInput');

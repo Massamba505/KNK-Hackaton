@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="height: 100%; width: 100%;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Submission Page</title>
     <link rel="stylesheet" href="/stylesheets/submission.css">
+    <script src="/socket.io/socket.io.js"></script>
     <script src="/javascripts/submission.js"></script>
 </head>
-<body>
+<body style="height: 100%; width: 100%;">
     <header>
         <!-- <section class="block"> -->
         <img src="/images/KNK101.jpg" alt="knk.png" id="pic">
@@ -20,6 +21,7 @@
                 <input type="file" id="fileInput" class="file-label">
 
                 <button type="button" onclick="sendFile()" id="sub" class="submit">Submit</button>
+                <button type="button" onclick="switch_res()" class="submit">View Results</button>
                 <section id="result" class="test-results"></section>
             </section>
         </div>
