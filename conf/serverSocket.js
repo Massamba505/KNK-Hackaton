@@ -93,6 +93,7 @@ async function run_test(test_id,filePath,socket,io,name){
 
 async function compile(socket,filePath,io,ID,test_id){
     console.log(`testing ${ID} with test ${test_id}`);
+    io.to(socket.id).emit("compiled",{message:`starting compilation`});
     try {
         const { stdout, stderr } = await exec(`g++ ${filePath}.cpp -o ${filePath}.exe`);
         if (stderr) {
